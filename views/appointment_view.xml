@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="appointment_tree" model="ir.ui.view">
+        <field name="name">kmhospital.appointment.tree</field>
+        <field name="model">kmhospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree decoration-warning="status=='draft'" decoration-danger="status=='done'" 
+                    decoration-success="status=='confirmed'">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="age"/>
+                <field name="checkup_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="appointment_form" model="ir.ui.view">
+        <field name="name">kmhospital.appointment.form</field>
+        <field name="model">kmhospital.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="status"/>
+                            <field name="appointment_date"/>
+                            <field name="checkup_date"/>                           
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Doctor prescription">
+                            <field name='description'/>
+                        </page>
+                        <page string="Medicine" name="medicine">
+                            <field name="prescription_medicine_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                        </group>
+                                        <group>
+                                            <field name="quantity"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Medical Test" name="medicaltest">
+                            <field name="prescription_medtest_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="name"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                     </notebook>
+                          
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="appointment_search" model="ir.ui.view">
+        <field name="name">kmhospital.appointment.search</field>
+        <field name="model">kmhospital.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Appointment">
+                <field name="name"/>    
+                <field name="gender"/>
+                <field name="phone"/>   
+                <field name="age"/>
+                <field name="status"/>         
+            </search>
+            </field>
+    </record>
+
+
+    <record id="appointment_kanban" model="ir.ui.view">
+        <field name="name">kmhospital.appointment.kanban</field>
+        <field name="model">kmhospital.appointment</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="status" decoration-warning="status=='draft'" decoration-danger="status=='done'" 
+                    decoration-success="status=='confirmed'">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="status"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <h1 class="o_kanban_record_title"><field name="name"/></h1>
+                                <ul>
+                                    <li>Name : <field name="name"/></li>
+                                    <li>Phone : <field name="phone"/></li>
+                                    <li>Checkup date : <field name="checkup_date"/></li>
+                                    <li>Status : <field name="status"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+    <record id="appointment_action" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kmhospital.appointment</field>
+        <field name="view_mode">tree,form,search,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create New Appointment
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hospital_appointment"
+        name="Appointments"
+        parent="hospital_root"
+        action="appointment_action" />
+
+</odoo>
