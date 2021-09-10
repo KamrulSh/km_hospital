@@ -1,66 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <record id="department_tree" model="ir.ui.view">
-        <field name="name">kmhospital.department.tree</field>
-        <field name="model">kmhospital.department</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-            </tree>
-        </field>
-    </record>
-
-    <record id="department_form" model="ir.ui.view">
-        <field name="name">kmhospital.department.form</field>
-        <field name="model">kmhospital.department</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
-                    
-                    <notebook>
-                        <page string="About">
-                            <field name='description'/>
-                        </page>
-                        <page string="Doctors">
-                            <!-- <field name='description'/> -->
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <record id="department_search" model="ir.ui.view">
-        <field name="name">kmhospital.department.search</field>
-        <field name="model">kmhospital.department</field>
-        <field name="arch" type="xml">
-            <search string="Departments">
-                <field name="name"/>                       
-                
-            </search>
-            </field>
-    </record>
-    
-    
-    <record id="department_action" model="ir.actions.act_window">
-        <field name="name">Departments</field>
+  
+    <record id="employees_action" model="ir.actions.act_window">
+        <field name="name">Department</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">kmhospital.department</field>
-        <field name="view_mode">tree,form,search</field>
+        <field name="res_model">hr.department</field>
+        <field name="view_mode">tree,form,kanban</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Create New Department
+                Create your first Employee
             </p>
         </field>
     </record>
+    
+  
+    
 
-    <menuitem id="hospital_department"
+    <menuitem id="all_employee"
         name="Departments"
         parent="hospital_root"
-        action="department_action" />
+        
+        action="employees_action"/>
+       
+
 
 </odoo>
