@@ -14,6 +14,7 @@
                 <field name="age"/>
                 <field name="checkup_date"/>
                 <field name="status"/>
+                <field name="appointed_doctor_id"/>
             </tree>
         </field>
     </record>
@@ -36,6 +37,7 @@
                             <field name="status"/>
                             <field name="appointment_date"/>
                             <field name="checkup_date"/>                           
+                            <field name="appointed_doctor_id"/>
                         </group>
                     </group>
                     <notebook>
@@ -89,6 +91,7 @@
                 <field name="phone"/>   
                 <field name="age"/>
                 <field name="status"/>         
+                <field name="appointed_doctor_id"/>
             </search>
             </field>
     </record>
@@ -115,6 +118,7 @@
                                     <li>Phone : <field name="phone"/></li>
                                     <li>Checkup date : <field name="checkup_date"/></li>
                                     <li>Status : <field name="status"/></li>
+                                    <li>Appointed doctor: <field name="appointed_doctor_id"/></li>
                                 </ul>
                             </div>
                         </div>

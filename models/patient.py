@@ -30,4 +30,4 @@ class HospitalPatient(models.Model):
     description = fields.Text()
     problems = fields.Text()
     
-    view_doctors_ids = fields.Many2one('kmhospital.doctor', string="Doctors List")
+    patient_appointment_ids = fields.One2many('kmhospital.appointment','name', string="Appointment List")

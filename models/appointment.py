@@ -4,7 +4,7 @@ class HospitalAppointment(models.Model):
     _name = 'kmhospital.appointment'
     _description = 'Appointments'
 
-    name = fields.Char(string='Patient Name', required=True)
+    name = fields.Many2one("kmhospital.patient", string='Patient Name', required=True)
     gender = fields.Selection([
         ('male','Male'),
         ('female', 'Female')
@@ -24,6 +24,8 @@ class HospitalAppointment(models.Model):
             "appointment_medicine_id", string="Prescription Medicine")
     prescription_medtest_ids = fields.One2many("kmhospital.appointment.prescription.tests", 
             "appointment_medtest_id", string="Prescription Tests")
+    appointed_doctor_id = fields.Many2one("kmhospital.doctor", string="Doctor name")
+    # appointed_patient_id = fields.Many2one("kmhospital.patient", string="Patient name")
 
 # for medicine record in patient appointment
 class AppointmentPrescriptionMedicine(models.Model):

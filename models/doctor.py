@@ -14,8 +14,9 @@ class HospitalDoctor(models.Model):
         ('female', 'Female')
     ])
     phone = fields.Char(string='Phone', required=True)
-    
     email = fields.Char(string='Email')
+    department_id = fields.Many2one("hr.department", string='Department')
+    view_appointment_ids = fields.One2many('kmhospital.appointment', 'appointed_doctor_id', string="Appointment List")
 
     @api.constrains('email')
     def _check_email(self):
@@ -32,5 +33,3 @@ class HospitalDoctor(models.Model):
     ], required=True)
     description = fields.Text()
     joined_from = fields.Date(string='Joined Date')
-
-    view_patients_ids = fields.One2many('kmhospital.patient','view_doctors_ids', string="Patients List")

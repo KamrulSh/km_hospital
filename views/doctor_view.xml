@@ -13,7 +13,8 @@
                 <field name="email"/>
                 <field name="status"/>
                 <field name="age"/>
-                <field name="joined_from"/>                 
+                <field name="joined_from"/> 
+                <field name="department_id"/>             
             </tree>
         </field>
     </record>
@@ -30,6 +31,7 @@
                             <field name="gender"/>
                             <field name="email"/>
                             <field name="phone"/>
+                            <field name="department_id"/>
                         </group>
                         <group>
                             <field name="address"/>
@@ -44,7 +46,7 @@
                             <field name='description'/>
                         </page>
                         <page string="Patient List">
-                            <field name='view_patients_ids'/>
+                            <field name='view_appointment_ids'/>
                         </page>                                     
                     </notebook>
                 </sheet>
@@ -63,7 +65,8 @@
                 <field name="gender"/>
                 <field name="phone"/>   
                 <field name="age"/>     
-                <field name="college"/>   
+                <field name="college"/>
+                <field name="department_id"/>   
             </search>
         </field>
     </record>
@@ -92,7 +95,7 @@
                 <field name="email"/>
                 <field name="status"/>
                 <field name="college"/> 
-
+                <field name="department_id"/> 
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
@@ -104,6 +107,7 @@
                                     <li>Email : <field name="email"/></li>
                                     <li>College : <field name="college"/></li>
                                     <li>Status : <field name="status"/></li>
+                                    <li>Department : <field name="department_id"/></li>
                                 </ul>
                             </div>
                         </div>

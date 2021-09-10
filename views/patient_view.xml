@@ -13,7 +13,7 @@
                 <field name="email"/>
                 <field name="status"/>
                 <field name="age"/>
-                <field name="view_doctors_ids"/>   
+                <field name="patient_appointment_ids"/>   
             </tree>
         </field>
     </record>
@@ -35,18 +35,16 @@
                             <field name="email"/>
                             <field name="status"/>
                             <field name="age"/>
-                            <field name="view_doctors_ids"/>   
                         </group>
-                        <notebook>
-                            <page string="About">
-                                <field name='description'/>
-                            </page>
-                            <page string="Problems">
-                                <field name='problems'/>
-                            </page>
-                        </notebook>
-                          
                     </group>
+                    <notebook>
+                        <page string="About">
+                            <field name='description'/>
+                        </page>
+                        <page string="Appointments">
+                            <field name="patient_appointment_ids"/> 
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -108,7 +106,7 @@
     </record>
 
     <menuitem id="hospital_root"
-            name="KM Hospital" />
+        name="KM Hospital" />
 
     <menuitem id="hospital_patient"
         name="Patients"
