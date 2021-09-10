@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-
     <record id="doctor_tree" model="ir.ui.view">
         <field name="name">kmhospital.doctor.tree</field>
         <field name="model">kmhospital.doctor</field>
@@ -15,10 +13,7 @@
                 <field name="email"/>
                 <field name="status"/>
                 <field name="age"/>
-                <field name="joined_from"/>  
-               
-                
-                
+                <field name="joined_from"/>                 
             </tree>
         </field>
     </record>
@@ -38,23 +33,20 @@
                         </group>
                         <group>
                             <field name="address"/>
-                            <field name="college"/>
-                           
+                            <field name="college"/>                          
                             <field name="status"/>
                             <field name="age"/>
-                            <field name="joined_from"/>  
-                            
-                        </group>
-                        
-                        <notebook>
-                      <page string="About">
-                          <field name='description'/>
-                      </page>
-                      
-                      
-                     </notebook>
-                          
+                            <field name="joined_from"/>                                            
+                        </group>                                                                       
                     </group>
+                    <notebook>
+                        <page string="About">
+                            <field name='description'/>
+                        </page>
+                        <page string="Patient List">
+                            <field name='view_patients_ids'/>
+                        </page>                                     
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -72,10 +64,8 @@
                 <field name="phone"/>   
                 <field name="age"/>     
                 <field name="college"/>   
-                            
-                
             </search>
-            </field>
+        </field>
     </record>
     
     
@@ -103,18 +93,15 @@
                 <field name="status"/>
                 <field name="college"/> 
 
-                
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click o_real_estate_kanban">
+                        <div class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
                                 <h1 class="o_kanban_record_title"><field name="name"/></h1>
                                 <ul>
-                                    
                                     <li>Gender : <field name="gender"/></li>
                                     <li>Phone : <field name="phone"/></li>
                                     <li>Email : <field name="email"/></li>
-                                    
                                     <li>College : <field name="college"/></li>
                                     <li>Status : <field name="status"/></li>
                                 </ul>
@@ -125,21 +112,10 @@
             </kanban>
         </field>
     </record>
-
-    
-    
-    
-    <menuitem id="hospital_root"
-            name="KM Hospital" />
-
-
-    
-
+   
     <menuitem id="hospital_doctor"
         name="Doctors"
         parent="hospital_root"
         action="doctor_action" />
-
-
 
 </odoo>
