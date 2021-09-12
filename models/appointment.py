@@ -8,10 +8,10 @@ class HospitalAppointment(models.Model):
     gender = fields.Selection([
         ('male','Male'),
         ('female', 'Female')
-    ])
-    phone = fields.Char(string='Phone', required=True)
-    email = fields.Char(string='Email')
-    age = fields.Char(string='Age')
+    ], related='name.gender')
+    phone = fields.Char(string='Phone', related='name.phone')
+    email = fields.Char(string='Email', related='name.email')
+    age = fields.Integer(string='Age', related='name.age')
     description = fields.Text()
     status = fields.Selection([
         ('draft','Draft'),
@@ -24,7 +24,7 @@ class HospitalAppointment(models.Model):
             "appointment_medicine_id", string="Prescription Medicine")
     prescription_medtest_ids = fields.One2many("kmhospital.appointment.prescription.tests", 
             "appointment_medtest_id", string="Prescription Tests")
-    appointed_doctor_id = fields.Many2one("kmhospital.doctor", string="Doctor name")
+    appointed_doctor_id = fields.Many2one("kmhospital.doctor", string="Doctor name", required=True)
     # appointed_patient_id = fields.Many2one("kmhospital.patient", string="Patient name")
 
 # for medicine record in patient appointment

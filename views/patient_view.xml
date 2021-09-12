@@ -11,7 +11,6 @@
                 <field name="gender"/>
                 <field name="phone"/>
                 <field name="email"/>
-                <field name="status"/>
                 <field name="age"/>
                 <field name="patient_appointment_ids"/>   
             </tree>
@@ -33,14 +32,10 @@
                         <group>
                             <field name="gender"/>
                             <field name="email"/>
-                            <field name="status"/>
                             <field name="age"/>
                         </group>
                     </group>
                     <notebook>
-                        <page string="About">
-                            <field name='description'/>
-                        </page>
                         <page string="Appointments">
                             <field name="patient_appointment_ids"/> 
                         </page>
@@ -67,12 +62,11 @@
         <field name="name">kmhospital.patient.kanban</field>
         <field name="model">kmhospital.patient</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="status">
+            <kanban default_group_by="age">
                 <field name="name"/>
                 <field name="gender"/>
                 <field name="phone"/>
                 <field name="email"/>
-                <field name="status"/>
 
                 <templates>
                     <t t-name="kanban-box">
@@ -83,7 +77,7 @@
                                     <li>Gender : <field name="gender"/></li>
                                     <li>Phone : <field name="phone"/></li>
                                     <li>Email : <field name="email"/></li>
-                                    <li>Status : <field name="status"/></li>
+                                    <li>Age : <field name="age"/></li>
                                 </ul>
                             </div>
                         </div>
