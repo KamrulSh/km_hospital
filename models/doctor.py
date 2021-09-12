@@ -16,7 +16,7 @@ class HospitalDoctor(models.Model):
     phone = fields.Char(string='Phone', required=True)
     email = fields.Char(string='Email', required=True)
     department_id = fields.Many2one("hr.department", string='Department', required=True)
-    view_appointment_ids = fields.One2many('kmhospital.appointment', 'appointed_doctor_id', string="Appointment List", readonly=True)
+    view_appointment_ids = fields.One2many('kmhospital.appointment', 'appointed_doctor_id', string="Appointment Count", readonly=True)
     age = fields.Integer(string='Age', required=True)
     status = fields.Selection([
         ('fulltime','Full time'),
@@ -39,3 +39,9 @@ class HospitalDoctor(models.Model):
         for record in self:
             if record.age <= 0:
                 raise ValidationError('Age must be greater than 0')
+
+    # same as view_appointment_ids but implemented using computed fields     
+    # total_appointments = fields.Integer(string='Total appointments', compute='_compute_appointments')
+    # def _compute_appointments(self):
+    #     for record in self:
+    #         record.total_appointments = self.env['kmhospital.appointment'].search_count([('appointed_doctor_id', '=', record.id)])

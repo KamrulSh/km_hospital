@@ -15,6 +15,7 @@
                 <field name="age"/>
                 <field name="joined_from"/> 
                 <field name="department_id"/>             
+                <field name="view_appointment_ids"/> 
             </tree>
         </field>
     </record>

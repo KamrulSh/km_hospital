@@ -16,7 +16,7 @@ class HospitalPatient(models.Model):
     phone = fields.Char(string='Phone', required=True)
     age = fields.Integer(string='Age', required=True)
     email = fields.Char(string='Email')
-    patient_appointment_ids = fields.One2many('kmhospital.appointment','name', string="Appointment List", readonly=True)
+    patient_appointment_ids = fields.One2many('kmhospital.appointment','name', string="Appointment Count", readonly=True)
 
     # check if the patient is already exists based on the patient name and phone number
     @api.constrains('name', 'phone')

@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class HospitalAppointment(models.Model):
     _name = 'kmhospital.appointment'
     _description = 'Appointments'
+    _order = "id desc"
 
     name = fields.Many2one("kmhospital.patient", string='Patient Name', required=True)
     gender = fields.Selection([
