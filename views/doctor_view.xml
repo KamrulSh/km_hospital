@@ -39,6 +39,7 @@
                             <field name="status"/>
                             <field name="age"/>
                             <field name="joined_from"/>                                            
+                            <field name="image" widget='image' class='oe_avatar'/>
                         </group>                                                                       
                     </group>
                     <notebook>
@@ -88,7 +89,7 @@
         <field name="name">kmhospital.doctor.kanban</field>
         <field name="model">kmhospital.doctor</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="status">
+            <kanban default_group_by="department_id">
                 <field name="name"/>
                 <field name="gender"/>
                 <field name="phone"/>
