@@ -62,7 +62,7 @@
         <field name="name">kmhospital.patient.kanban</field>
         <field name="model">kmhospital.patient</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="age">
+            <kanban default_group_by="gender">
                 <field name="name"/>
                 <field name="gender"/>
                 <field name="phone"/>

@@ -118,12 +118,34 @@
             </kanban>
         </field>
     </record>
-    
+
+    <!-- calender view -->
+    <record id="appointment_view_calendar" model="ir.ui.view">   
+        <field name="name">kmhospital.appointment.calendar</field>   
+        <field name="model">kmhospital.appointment</field>   
+        <field name="arch" type="xml">      
+            <calendar string="Appointments" date_start="appointment_date" date_stop="checkup_date" event_open_popup="true" mode="month" color="name" quick_add="False">          
+                <field name="name"/>         
+            </calendar>
+        </field>   
+     </record>
+
+    <!-- pivot view -->
+    <record id="appointment_pivot" model="ir.ui.view">  
+        <field name="name">kmhospital.appointment.pivot</field>  
+        <field name="model">kmhospital.appointment</field>  
+        <field name="arch" type="xml">      
+            <pivot string="Appointments Pivot View">           
+                <field name="name" type="row"/>      
+            </pivot>   
+        </field>
+    </record>
+
     <record id="appointment_action" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.appointment</field>
-        <field name="view_mode">tree,form,search,kanban</field>
+        <field name="view_mode">tree,form,search,kanban,calendar,pivot</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create New Appointment
