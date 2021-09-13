@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="address"/>
+                <field name="address_partner_id"/>
                 <field name="college"/>
                 <field name="gender"/>
                 <field name="phone"/>
@@ -35,7 +35,7 @@
                             <field name="department_id"/>
                         </group>
                         <group>
-                            <field name="address"/>
+                            <field name="address_partner_id"/>
                             <field name="college"/>                          
                             <field name="status"/>
                             <field name="age"/>
@@ -73,12 +73,20 @@
         </field>
     </record>
     
-    
+    <!-- map view -->
+    <record id="doctor_view_maps" model="ir.ui.view">
+        <field name="name">kmhospital.doctor.map</field>
+        <field name="model">kmhospital.doctor</field>
+        <field name="arch" type="xml">
+            <map res_partner="address_partner_id"></map>
+        </field>
+    </record>
+
     <record id="doctor_action" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.doctor</field>
-        <field name="view_mode">tree,form,search,kanban</field>
+        <field name="view_mode">tree,form,search,kanban,map</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create Doctors List

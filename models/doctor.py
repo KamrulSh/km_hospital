@@ -8,7 +8,7 @@ class HospitalDoctor(models.Model):
 
     name = fields.Char(string='Doctor Name', required=True)
     college = fields.Char(string='College')
-    address = fields.Char(string='Address')
+    address_partner_id = fields.Many2one('res.partner',string="Address")
     gender = fields.Selection([
         ('male','Male'),
         ('female', 'Female')
