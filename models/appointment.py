@@ -26,7 +26,6 @@ class HospitalAppointment(models.Model):
             "appointment_medicine_id", string="Prescription Medicine")
     appointed_doctor_id = fields.Many2one("kmhospital.doctor", string="Doctor name", required=True)
     prescription_medical_test_ids = fields.Many2many("kmhospital.medicaltest", "medical_test_ids", string="Medical tests")
-    partner_id = fields.Many2one('res.partner',string="Partner ID")
 
     @api.constrains('appointment_date', 'checkup_date')
     def _check_date_validation(self):

@@ -87,7 +87,6 @@
             </field>
     </record>
 
-
     <record id="appointment_kanban" model="ir.ui.view">
         <field name="name">kmhospital.appointment.kanban</field>
         <field name="model">kmhospital.appointment</field>
@@ -143,19 +142,10 @@
 
     <!-- gantt view -->
     <record id="appointment_gantt" model="ir.ui.view">
-    <field name="name">kmhospital.appointment.gantt</field>
-    <field name="model">kmhospital.appointment</field>
-    <field name="arch" type="xml">
-        <gantt string="Appointment Gantt view" date_start="appointment_date" date_stop="checkup_date" ></gantt>
-    </field>
-    </record>
-
-    <!-- map view -->
-    <record id="appointment_view_maps" model="ir.ui.view">
-        <field name="name">real_estate map</field>
-        <field name="model">realestate.properties</field>
+        <field name="name">kmhospital.appointment.gantt</field>
+        <field name="model">kmhospital.appointment</field>
         <field name="arch" type="xml">
-            <map res_partner="partner_id"></map>
+            <gantt string="Appointment Gantt view" date_start="appointment_date" date_stop="checkup_date" ></gantt>
         </field>
     </record>
 
