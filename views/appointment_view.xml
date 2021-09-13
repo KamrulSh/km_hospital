@@ -141,11 +141,29 @@
         </field>
     </record>
 
+    <!-- gantt view -->
+    <record id="appointment_gantt" model="ir.ui.view">
+    <field name="name">kmhospital.appointment.gantt</field>
+    <field name="model">kmhospital.appointment</field>
+    <field name="arch" type="xml">
+        <gantt string="Appointment Gantt view" date_start="appointment_date" date_stop="checkup_date" ></gantt>
+    </field>
+    </record>
+
+    <!-- map view -->
+    <record id="appointment_view_maps" model="ir.ui.view">
+        <field name="name">real_estate map</field>
+        <field name="model">realestate.properties</field>
+        <field name="arch" type="xml">
+            <map res_partner="partner_id"></map>
+        </field>
+    </record>
+
     <record id="appointment_action" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.appointment</field>
-        <field name="view_mode">tree,form,search,kanban,calendar,pivot</field>
+        <field name="view_mode">tree,form,search,kanban,calendar,pivot,gantt,map,graph</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create New Appointment
