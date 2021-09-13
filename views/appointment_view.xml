@@ -63,16 +63,7 @@
                             </field>
                         </page>
                         <page string="Medical Test" name="medicaltest">
-                            <field name="prescription_medtest_ids">
-                                <tree editable="bottom">
-                                    <field name="name"/>
-                                </tree>
-                                <form>
-                                    <group>
-                                        <field name="name"/>
-                                    </group>
-                                </form>
-                            </field>
+                            <field name="prescription_medical_test_ids"/>
                         </page>
                      </notebook>
                           

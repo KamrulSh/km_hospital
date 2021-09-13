@@ -29,6 +29,7 @@
         'views/doctor_view.xml',
         'views/department_view.xml',
         'views/appointment_view.xml',
+        'views/medicaltest_view.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [

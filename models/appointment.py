@@ -24,10 +24,8 @@ class HospitalAppointment(models.Model):
     checkup_date = fields.Datetime(string='Checkup Date', required=True)
     prescription_medicine_ids = fields.One2many("kmhospital.appointment.prescription.medicine", 
             "appointment_medicine_id", string="Prescription Medicine")
-    prescription_medtest_ids = fields.One2many("kmhospital.appointment.prescription.tests", 
-            "appointment_medtest_id", string="Prescription Tests")
     appointed_doctor_id = fields.Many2one("kmhospital.doctor", string="Doctor name", required=True)
-    # appointed_patient_id = fields.Many2one("kmhospital.patient", string="Patient name")
+    prescription_medical_test_ids = fields.Many2many("kmhospital.medicaltest", "medical_test_ids", string="Medical tests")
 
     @api.constrains('appointment_date', 'checkup_date')
     def _check_date_validation(self):
@@ -43,11 +41,3 @@ class AppointmentPrescriptionMedicine(models.Model):
     name = fields.Char(string="Medicine", required=True)
     quantity = fields.Integer(string="Quantity")
     appointment_medicine_id = fields.Many2one("kmhospital.appointment", string="Appointment medicine")
-
-# for medical test record in patient appointment
-class AppointmentPrescriptionTest(models.Model):
-    _name = "kmhospital.appointment.prescription.tests"
-    _description = "Appointment Prescription Tests"
-
-    name = fields.Char(string="Medical Tests", required=True)
-    appointment_medtest_id = fields.Many2one("kmhospital.appointment", string="Appointment medical test")
