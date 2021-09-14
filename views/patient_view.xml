@@ -99,6 +99,22 @@
         </field>
     </record>
 
+    <!-- action server for creating appointment from patient -->
+    <record id="action_create_appointment" model="ir.actions.server">
+        <field name="name">Create appointment</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="km_hospital.model_kmhospital_patient"/>
+        <field name="binding_model_id" ref="km_hospital.model_kmhospital_patient"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+            if record:
+                actions_values = env.ref('km_hospital.appointment_action').sudo().read()[0]
+                actions_values.update({'context': env.context})
+                action = actions_values
+        </field>
+    </record>
+
     <menuitem id="hospital_root"
         name="KM Hospital" />
 
