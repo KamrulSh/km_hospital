@@ -32,6 +32,13 @@ class HospitalAppointment(models.Model):
         for record in self:
             if record.checkup_date < record.appointment_date:
                 raise ValidationError('Checkup date should not be previous date.')
+    
+    # changing the status
+    def action_status_confirm(self):
+        self.status = 'confirmed'
+
+    def action_status_done(self):
+        self.status = 'done'
 
 # for medicine record in patient appointment
 class AppointmentPrescriptionMedicine(models.Model):

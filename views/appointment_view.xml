@@ -153,6 +153,28 @@
         </field>
     </record>
 
+    <!-- action server for changing the status to confirmed -->
+    <record id="action_appointment_confirm" model="ir.actions.server">
+        <field name="name">Confirm appointment</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_kmhospital_appointment"/>
+        <field name="binding_model_id" ref="model_kmhospital_appointment"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">records.action_status_confirm()</field>
+    </record>
+
+    <!-- action server for changing the status to done -->
+    <record id="action_appointment_done" model="ir.actions.server">
+        <field name="name">Done appointment</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_kmhospital_appointment"/>
+        <field name="binding_model_id" ref="model_kmhospital_appointment"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">records.action_status_done()</field>
+    </record>
+
     <menuitem id="hospital_appointment"
         name="Appointments"
         parent="hospital_root"
