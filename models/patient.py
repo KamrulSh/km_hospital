@@ -38,3 +38,10 @@ class HospitalPatient(models.Model):
         for record in self:
             if record.age <= 0:
                 raise ValidationError('Age must be greater than 0')
+
+    def action_url(self):
+        return {
+            "type": "ir.actions.act_url",
+            "url": "https://github.com/KamrulSh/km_hospital",
+            "target": "new",
+        }

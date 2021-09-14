@@ -22,6 +22,9 @@
         <field name="model">kmhospital.patient</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_url" string="Open github" class="btn-primary" type="object"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
