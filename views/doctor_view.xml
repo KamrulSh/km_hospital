@@ -118,6 +118,26 @@
             </kanban>
         </field>
     </record>
+
+    <record id="action_halftime_confirm" model="ir.actions.server">
+        <field name="name">Confirm Parttime</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_kmhospital_doctor"/>
+        <field name="binding_model_id" ref="model_kmhospital_doctor"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">records.action_status_halftime()</field>
+    </record>
+
+    <record id="action_fulltime_confirm" model="ir.actions.server">
+        <field name="name">Confirm Fulltime</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_kmhospital_doctor"/>
+        <field name="binding_model_id" ref="model_kmhospital_doctor"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">records.action_status_fulltime()</field>
+    </record>
    
     <menuitem id="hospital_doctor"
         name="Doctors"

@@ -25,6 +25,12 @@ class HospitalDoctor(models.Model):
     description = fields.Text()
     joined_from = fields.Date(string='Joined Date')
     image = fields.Binary(string='Image', attachment=True)
+
+    def action_status_halftime(self):
+        self.status= 'parttime'
+
+    def action_status_fulltime(self):
+        self.status= 'fulltime'
     
     @api.constrains('email')
     def _check_email(self):
