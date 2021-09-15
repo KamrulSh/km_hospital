@@ -30,6 +30,7 @@
         'views/department_view.xml',
         'views/appointment_view.xml',
         'views/medicaltest_view.xml',
+        'reports/report.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [

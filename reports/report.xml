@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_patient_card" model="ir.actions.report">
+        <field name="name">Patient Card</field>
+        <field name="model">kmhospital.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">km_hospital.report_patient_card</field>
+        <field name="report_file">km_hospital.report_patient_card</field>
+        <field name="binding_model_id" ref="model_kmhospital_patient"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_patient_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 align="center">Patient Report</h2>
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <table class="table table-condensed" style="border: 2px solid black !important;">
+                                    <tr>
+                                        <td width="100%">
+                                            <table>
+                                                <tr>
+                                                    <td colspan="6" class="text-center">
+                                                        <span t-field="o.name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Age</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.age"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Phone</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.phone"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Address</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.address"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Email</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.email"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <t t-if="o.patient_appointment_ids">
+                            <span>Appointment Details</span>
+                            <table class="table table-sm o_main_table" name="appointment">
+                                <thead>
+                                    <tr>
+                                        <th name="th_checkupdate" class="text-left">
+                                            <span>Checkup date</span>
+                                        </th>
+                                        <th name="th_status" class="text-left">
+                                            <span>Status</span>
+                                        </th>
+                                        <th name="th_doctor" class="text-left">
+                                            <span>Doctor</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <t t-set="appointment_count" t-value="0"/>
+                                <t t-foreach="o.patient_appointment_ids" t-as="line">
+                                    <t t-set="appointment_count" t-value="appointment_count + 1"/>
+                                    <tr>
+                                        <td>
+                                            <span t-field="line.checkup_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.status"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.appointed_doctor_id"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <strong>Total Appointments</strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="appointment_count"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </t>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
