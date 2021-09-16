@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_order_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='row mt32 mb32']" position="after">
+            <div class="row mt32 mb32" id="test_inherit">
+                <div class="col-auto col-3 mw-100 mb-2">
+                    <strong>Test report customization by Kamrul</strong>
+                </div>
+            </div>
+        </xpath>
+        <!-- <xpath expr="//div[@class='row mt32 mb32']" position="replace">
+        </xpath> -->
+    </template>
+
+</odoo>
