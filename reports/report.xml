@@ -84,6 +84,35 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <span>Appointment Details using python</span>
+                                <table class="table table-condensed" style="border: 2px solid black !important;">
+                                    <thead>
+                                        <tr>
+                                            <th name="th_checkupdate" class="text-left">
+                                                <span>Checkup date</span>
+                                            </th>
+                                            <th name="th_status" class="text-left">
+                                                <span>Status</span>
+                                            </th>
+                                            <th name="th_doctor" class="text-left">
+                                                <span>Doctor name</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <t t-foreach="appointment_list" t-as="appo">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="appo['checkup_date']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="appo['status']"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="appo['appointed_doctor_id']"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
                             </div>
                         </div>
 
