@@ -33,6 +33,7 @@
         'views/medicaltest_view.xml',
         'reports/report.xml',
         'reports/sale_report_inherit.xml',
+        'reports/appointment_report.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [
