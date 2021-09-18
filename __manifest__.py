@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',    
+        'wizard/appointment_report_view.xml',
         'views/patient_view.xml',
         'views/doctor_view.xml',
         'views/department_view.xml',

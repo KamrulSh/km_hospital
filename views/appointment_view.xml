@@ -177,7 +177,16 @@
 
     <menuitem id="hospital_appointment"
         name="Appointments"
-        parent="hospital_root"
+        parent="hospital_root" />
+
+    <menuitem id="all_appointment"
+        name="All Appointments"
+        parent="hospital_appointment"
         action="appointment_action" />
+
+    <menuitem id="print_patient_appointment"
+        name="Print Appointment"
+        parent="hospital_appointment"
+        action="action_report_appointment" />
 
 </odoo>
