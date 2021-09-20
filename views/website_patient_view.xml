@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="menu_patients_webview" model="website.menu">
+            <field name="name">Patients List</field>
+            <field name="url">/patient_view</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">56</field>
+        </record>
+        <template id="view_patient" name="Patients">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h3>Patients Details</h3>
+                    <table class="table table-bordered my-5">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="patients" t-as="patient">
+                                <tr>
+                                    <td>
+                                        <t t-esc="patient.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="patient.phone"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="patient.email"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="patient.gender"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

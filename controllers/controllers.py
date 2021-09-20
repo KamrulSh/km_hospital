@@ -13,3 +13,12 @@ class KmHospital(http.Controller):
         # print("\nData Received.....", kw)
         request.env['kmhospital.patient'].sudo().create(kw)
         return request.render("km_hospital.patient_thanks", {})
+
+    # route for show all the patient information
+    @http.route('/patient_view', type='http', auth='public', website=True)
+    def view_patient_web(self, **kw):
+        patients = request.env['kmhospital.patient'].sudo().search([])
+        # print("\nData Received.....", patients)
+        return http.request.render('km_hospital.view_patient', {
+            'patients': patients
+        })
