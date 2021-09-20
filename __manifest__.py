@@ -10,7 +10,7 @@
         department, medical test, and appointments.
     """,
 
-    'author': "Kamrul",
+    'author': "Kamrul & Niazi",
     'website': "http://www.yourcompany.com",
     'category': 'Services',
     'version': '0.1',
