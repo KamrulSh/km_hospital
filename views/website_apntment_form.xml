@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="menu_appointment_form" model="website.menu">
+        <field name="name">Create appointment</field>
+        <field name="url">/appointment_webform</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">55</field>
+    </record>
+
+    <template id="create_appointment" name="Create appointment">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <form role="form" action="/create/webappointment" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label for="name" class="control-label">Patient Name</label>
+                                <select name="name" class="form-control link-style">
+                                    <t t-foreach='patient_rec' t-as="patient">
+                                        <option t-esc='patient.name' t-att-value='patient.id'/>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="status" class="control-label">Status</label>
+                                <select name="status" id="status" class="form-control">
+                                    <option value="draft">Draft</option>
+                                    <option value="confirmed">Confirmed</option>
+                                    <option value="done">Done</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkup_date" class="control-label">Checkup date</label>
+                                <input type="date" name="checkup_date" t-att-value="checkup_date" id="checkup_date" class="form-control" required="required"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointed_doctor_id" class="control-label">Doctor Name</label>
+                                <select name="appointed_doctor_id" class="form-control link-style">
+                                    <t t-foreach='doctor_rec' t-as="doctor">
+                                        <option t-esc='doctor.name' t-att-value='doctor.id'/>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <div class="clearfix oe_login_buttons">
+                                <button type="submit" class="btn btn-primary pull-left">Create Patient</button>
+                            </div>
+                            <br/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <record id="appointment_thanks" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="type">qweb</field>
+        <field name="url">/appointment-thank-you</field>
+        <field name="website_published">True</field>
+        <field name="key">km_hospital.appointment_thanks</field>
+        <field name="arch" type="xml">
+            <t name="Thanks" t-name="km_hospital.appointment_thanks">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Thanks!</h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success" role="status"> The appointment has been Created successfully. </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+
+</odoo>

@@ -22,3 +22,19 @@ class KmHospital(http.Controller):
         return http.request.render('km_hospital.view_patient', {
             'patients': patients
         })
+
+    # route for appointment website
+    @http.route('/appointment_webform', type='http', auth='public', website=True)
+    def appointment_webform(self, **kw):
+        patient_rec = request.env['kmhospital.patient'].sudo().search([])
+        doctor_rec = request.env['kmhospital.doctor'].sudo().search([])
+        return http.request.render('km_hospital.create_appointment', {
+            'patient_rec': patient_rec,
+            'doctor_rec': doctor_rec
+        })
+
+    @http.route('/create/webappointment', type="http", auth="public", website=True)
+    def create_webappointment(self, **kw):
+        print("\nData Received.....", kw)
+        request.env['kmhospital.appointment'].sudo().create(kw)
+        return request.render("km_hospital.appointment_thanks", {})

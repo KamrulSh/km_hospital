@@ -29,6 +29,7 @@
         'views/medicaltest_view.xml',
         'views/website_patient_form.xml',
         'views/website_patient_view.xml',
+        'views/website_apntment_form.xml',
         'reports/report.xml',
         'reports/sale_report_inherit.xml',
         'reports/appointment_report.xml',
