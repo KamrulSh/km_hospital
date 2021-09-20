@@ -16,7 +16,7 @@
     'version': '0.1',
     'license': 'LGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base','hr'],
+    'depends': ['base','hr','website'],
 
     # always loaded
     'data': [
@@ -27,6 +27,7 @@
         'views/department_view.xml',
         'views/appointment_view.xml',
         'views/medicaltest_view.xml',
+        'views/website_patient_form.xml',
         'reports/report.xml',
         'reports/sale_report_inherit.xml',
         'reports/appointment_report.xml',

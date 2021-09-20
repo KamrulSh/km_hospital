@@ -1,21 +1,15 @@
 # -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
+from odoo.http import request
 
+class KmHospital(http.Controller):
 
-# class KmHospital(http.Controller):
-#     @http.route('/km__hospital/km__hospital/', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+    @http.route('/patient_webform', type='http', auth='public', website=True)
+    def patient_webform(self, **kw):
+        return http.request.render('km_hospital.create_patient', {})
 
-#     @http.route('/km__hospital/km__hospital/objects/', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('km__hospital.listing', {
-#             'root': '/km__hospital/km__hospital',
-#             'objects': http.request.env['km__hospital.km__hospital'].search([]),
-#         })
-
-#     @http.route('/km__hospital/km__hospital/objects/<model("km__hospital.km__hospital"):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('km__hospital.object', {
-#             'object': obj
-#         })
+    @http.route('/create/webpatient', type="http", auth="public", website=True)
+    def create_webpatient(self, **kw):
+        # print("\nData Received.....", kw)
+        request.env['kmhospital.patient'].sudo().create(kw)
+        return request.render("km_hospital.patient_thanks", {})
