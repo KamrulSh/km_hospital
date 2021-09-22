@@ -124,6 +124,7 @@
     <menuitem id="hospital_patient"
         name="Patients"
         parent="hospital_root"
+        groups="km_hospital.group_hospital_admin"
         action="patient_action" />
 
 </odoo>

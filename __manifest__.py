@@ -20,6 +20,7 @@
 
     # always loaded
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',    
         'wizard/appointment_report_view.xml',
         'views/patient_view.xml',
