@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="module_category_hospital">
+        <field name="name">Hospital Management</field>
+        <field name="description">Category For Hospital</field>
+        <field name="sequence">45</field>
+    </record>
+
+    <record id="group_hospital_labman" model="res.groups">
+        <field name="name">Lab man</field>
+        <field name="category_id" ref="module_category_hospital"/>
+    </record>
+
+    <record id="group_hospital_admin" model="res.groups">
+        <field name="name">Admin</field>
+        <field name="category_id" ref="module_category_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hospital_labman'))]"/>
+    </record>
+
+</odoo>
