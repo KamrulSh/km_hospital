@@ -16,7 +16,7 @@
     'version': '0.1',
     'license': 'LGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base','hr','website'],
+    'depends': ['base','hr','website', 'website_sale'],
 
     # always loaded
     'data': [
@@ -31,6 +31,8 @@
         'views/website_patient_form.xml',
         'views/website_patient_view.xml',
         'views/website_apntment_form.xml',
+        'views/equipment_sale.xml',
+        'views/sales_order.xml',
         'reports/report.xml',
         'reports/sale_report_inherit.xml',
         'reports/appointment_report.xml',

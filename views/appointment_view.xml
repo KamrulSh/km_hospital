@@ -9,7 +9,7 @@
                     decoration-success="status=='confirmed'">
                 <field name="name"/>
                 <field name="gender"/>
-                <field name="phone"/>
+                <field name="phone" groups="km_hospital.group_hospital_admin"/>
                 <field name="email"/>
                 <field name="age"/>
                 <field name="checkup_date"/>
@@ -30,7 +30,7 @@
                             <field name="name"/>
                             <field name="age"/>
                             <field name="gender"/>
-                            <field name="phone"/>
+                            <field name="phone" groups="km_hospital.group_hospital_admin"/>
                             <field name="email"/>
                         </group>
                         <group>
@@ -79,7 +79,7 @@
             <search string="Appointment">
                 <field name="name"/>    
                 <field name="gender"/>
-                <field name="phone"/>   
+                <field name="phone" groups="km_hospital.group_hospital_admin"/>
                 <field name="age"/>
                 <field name="status"/>         
                 <field name="appointed_doctor_id"/>

@@ -11,8 +11,8 @@
             <t t-call="website.layout">
                 <div class="container">
                     <h3>Patients Details</h3>
-                    <table class="table table-bordered my-5">
-                        <thead>
+                    <table class="table table-bordered table-hover table-striped table-danger my-5">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Name</th>
                                 <th>Phone</th>

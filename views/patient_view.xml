@@ -12,7 +12,7 @@
                 <field name="phone"/>
                 <field name="email"/>
                 <field name="age"/>
-                <field name="patient_appointment_ids"/>   
+                <field name="patient_appointment_ids"/>
             </tree>
         </field>
     </record>
@@ -40,7 +40,7 @@
                     </group>
                     <notebook>
                         <page string="Appointments">
-                            <field name="patient_appointment_ids"/> 
+                            <field name="patient_appointment_ids"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -53,10 +53,10 @@
         <field name="model">kmhospital.patient</field>
         <field name="arch" type="xml">
             <search string="Patients">
-                <field name="name"/>    
+                <field name="name"/>
                 <field name="gender"/>
-                <field name="phone"/>   
-                <field name="age"/>                     
+                <field name="phone"/>
+                <field name="age"/>
             </search>
             </field>
     </record>
@@ -89,7 +89,7 @@
             </kanban>
         </field>
     </record>
-    
+
     <record id="patient_action" model="ir.actions.act_window">
         <field name="name">Patients</field>
         <field name="type">ir.actions.act_window</field>
@@ -119,12 +119,40 @@
     </record>
 
     <menuitem id="hospital_root"
-        name="KM Hospital" />
+        name="KM Hospital"
+        web_icon="km_hospital,static/description/icon.png"/>
 
     <menuitem id="hospital_patient"
         name="Patients"
         parent="hospital_root"
         groups="km_hospital.group_hospital_admin"
         action="patient_action" />
+
+    <!--  sale product  -->
+    <record id='action_product' model='ir.actions.act_window'>
+        <field name='name'>Hospital equipment</field>
+        <field name='res_model'>product.template</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+    <menuitem
+        id='menu_product'
+        action='action_product'
+        name='Hospital equipment'
+        parent='hospital_root'
+        sequence='10'/>
+
+    <record id='action_sales' model='ir.actions.act_window'>
+        <field name='name'>Sales order</field>
+        <field name='res_model'>sale.order</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+  <menuitem
+        id='menu_sales'
+        action='action_sales'
+        name='Sales order'
+        parent='hospital_root'
+        sequence='11'/>
 
 </odoo>

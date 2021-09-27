@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_base_product" model="ir.ui.view">
+        <field name="name">sale.list</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_order"/>
+                <field name="commitment_date" string="Is Published" optional="hide"/>
+                <field name="date_order"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>
