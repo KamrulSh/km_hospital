@@ -4,11 +4,11 @@ from odoo.http import request
 
 class KmHospital(http.Controller):
 
-    @http.route('/patient_webform', type='http', auth='public', website=True)
+    @http.route('/patient_webform', type='http', auth='user', website=True)
     def patient_webform(self, **kw):
         return http.request.render('km_hospital.create_patient', {})
 
-    @http.route('/create/webpatient', type="http", auth="public", website=True)
+    @http.route('/create/webpatient', type="http", auth="user", website=True)
     def create_webpatient(self, **kw):
         # print("\nData Received.....", kw)
         request.env['kmhospital.patient'].sudo().create(kw)
@@ -24,7 +24,7 @@ class KmHospital(http.Controller):
         })
 
     # route for appointment website
-    @http.route('/appointment_webform', type='http', auth='public', website=True)
+    @http.route('/appointment_webform', type='http', auth='user', website=True)
     def appointment_webform(self, **kw):
         patient_rec = request.env['kmhospital.patient'].sudo().search([])
         doctor_rec = request.env['kmhospital.doctor'].sudo().search([])
@@ -33,7 +33,7 @@ class KmHospital(http.Controller):
             'doctor_rec': doctor_rec
         })
 
-    @http.route('/create/webappointment', type="http", auth="public", website=True)
+    @http.route('/create/webappointment', type="http", auth="user", website=True)
     def create_webappointment(self, **kw):
         print("\nData Received.....", kw)
         request.env['kmhospital.appointment'].sudo().create(kw)
