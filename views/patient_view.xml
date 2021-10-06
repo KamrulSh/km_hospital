@@ -44,6 +44,11 @@
                         </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -58,7 +63,7 @@
                 <field name="phone"/>
                 <field name="age"/>
             </search>
-            </field>
+        </field>
     </record>
 
     <record id="patient_kanban" model="ir.ui.view">
@@ -70,17 +75,26 @@
                 <field name="gender"/>
                 <field name="phone"/>
                 <field name="email"/>
-
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
-                                <h1 class="o_kanban_record_title"><field name="name"/></h1>
+                                <h1 class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </h1>
                                 <ul>
-                                    <li>Gender : <field name="gender"/></li>
-                                    <li>Phone : <field name="phone"/></li>
-                                    <li>Email : <field name="email"/></li>
-                                    <li>Age : <field name="age"/></li>
+                                    <li>Gender :
+                                        <field name="gender"/>
+                                    </li>
+                                    <li>Phone :
+                                        <field name="phone"/>
+                                    </li>
+                                    <li>Email :
+                                        <field name="email"/>
+                                    </li>
+                                    <li>Age :
+                                        <field name="age"/>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -118,41 +132,42 @@
         </field>
     </record>
 
-    <menuitem id="hospital_root"
-        name="KM Hospital"
-        web_icon="km_hospital,static/description/icon.png"/>
-
-    <menuitem id="hospital_patient"
-        name="Patients"
-        parent="hospital_root"
-        groups="km_hospital.group_hospital_admin"
-        action="patient_action" />
-
-    <!--  sale product  -->
+    <!--  action sale hospital equipment  -->
     <record id='action_product' model='ir.actions.act_window'>
         <field name='name'>Hospital equipment</field>
         <field name='res_model'>product.template</field>
         <field name='view_mode'>tree,form</field>
     </record>
 
-    <menuitem
-        id='menu_product'
-        action='action_product'
-        name='Hospital equipment'
-        parent='hospital_root'
-        sequence='10'/>
-
+    <!--  action sales order  -->
     <record id='action_sales' model='ir.actions.act_window'>
         <field name='name'>Sales order</field>
         <field name='res_model'>sale.order</field>
         <field name='view_mode'>tree,form</field>
     </record>
 
-  <menuitem
-        id='menu_sales'
-        action='action_sales'
-        name='Sales order'
-        parent='hospital_root'
-        sequence='11'/>
+    <menuitem id="hospital_root"
+              name="KM Hospital"
+              web_icon="km_hospital,static/description/icon.png"/>
+
+    <menuitem id="hospital_patient"
+              name="Patients"
+              parent="hospital_root"
+              groups="km_hospital.group_hospital_admin"
+              action="patient_action"/>
+
+    <menuitem
+            id='menu_product'
+            action='action_product'
+            name='Hospital equipment'
+            parent='hospital_root'
+            sequence='10'/>
+
+    <menuitem
+            id='menu_sales'
+            action='action_sales'
+            name='Sales order'
+            parent='hospital_root'
+            sequence='11'/>
 
 </odoo>

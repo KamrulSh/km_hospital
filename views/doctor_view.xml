@@ -13,9 +13,9 @@
                 <field name="email"/>
                 <field name="status"/>
                 <field name="age"/>
-                <field name="joined_from"/> 
-                <field name="department_id"/>             
-                <field name="view_appointment_ids"/> 
+                <field name="joined_from"/>
+                <field name="department_id"/>
+                <field name="view_appointment_ids"/>
             </tree>
         </field>
     </record>
@@ -36,12 +36,12 @@
                         </group>
                         <group>
                             <field name="address"/>
-                            <field name="college"/>                          
+                            <field name="college"/>
                             <field name="status"/>
                             <field name="age"/>
-                            <field name="joined_from"/>                                            
+                            <field name="joined_from"/>
                             <field name="image" widget='image' class='oe_avatar'/>
-                        </group>                                                                       
+                        </group>
                     </group>
                     <notebook>
                         <page string="About">
@@ -49,9 +49,14 @@
                         </page>
                         <page string="Patient List">
                             <field name='view_appointment_ids'/>
-                        </page>                                     
+                        </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -61,19 +66,18 @@
         <field name="model">kmhospital.doctor</field>
         <field name="arch" type="xml">
             <search string="Doctor">
-                <field name="name"/>    
+                <field name="name"/>
                 <field name="email"/>
                 <field name="status"/>
                 <field name="gender"/>
-                <field name="phone"/>   
-                <field name="age"/>     
+                <field name="phone"/>
+                <field name="age"/>
                 <field name="college"/>
-                <field name="department_id"/>   
+                <field name="department_id"/>
             </search>
         </field>
     </record>
-    
-    
+
     <record id="doctor_action" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="type">ir.actions.act_window</field>
@@ -96,20 +100,34 @@
                 <field name="phone"/>
                 <field name="email"/>
                 <field name="status"/>
-                <field name="college"/> 
-                <field name="department_id"/> 
+                <field name="college"/>
+                <field name="department_id"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
-                                <h1 class="o_kanban_record_title"><field name="name"/></h1>
+                                <h1 class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </h1>
                                 <ul>
-                                    <li>Gender : <field name="gender"/></li>
-                                    <li>Phone : <field name="phone"/></li>
-                                    <li>Email : <field name="email"/></li>
-                                    <li>College : <field name="college"/></li>
-                                    <li>Status : <field name="status"/></li>
-                                    <li>Department : <field name="department_id"/></li>
+                                    <li>Gender :
+                                        <field name="gender"/>
+                                    </li>
+                                    <li>Phone :
+                                        <field name="phone"/>
+                                    </li>
+                                    <li>Email :
+                                        <field name="email"/>
+                                    </li>
+                                    <li>College :
+                                        <field name="college"/>
+                                    </li>
+                                    <li>Status :
+                                        <field name="status"/>
+                                    </li>
+                                    <li>Department :
+                                        <field name="department_id"/>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -138,10 +156,10 @@
         <field name="state">code</field>
         <field name="code">records.action_status_fulltime()</field>
     </record>
-   
+
     <menuitem id="hospital_doctor"
-        name="Doctors"
-        parent="hospital_root"
-        action="doctor_action" />
+              name="Doctors"
+              parent="hospital_root"
+              action="doctor_action"/>
 
 </odoo>

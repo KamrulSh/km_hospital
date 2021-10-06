@@ -2,24 +2,27 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import re
 
+
 class HospitalDoctor(models.Model):
     _name = 'kmhospital.doctor'
     _description = 'Hospital Doctor'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Doctor Name', required=True)
     college = fields.Char(string='College')
     address = fields.Char(string='Address')
     gender = fields.Selection([
-        ('male','Male'),
+        ('male', 'Male'),
         ('female', 'Female')
     ], default='male')
     phone = fields.Char(string='Phone', required=True)
     email = fields.Char(string='Email', required=True)
     department_id = fields.Many2one("hr.department", string='Department', required=True)
-    view_appointment_ids = fields.One2many('kmhospital.appointment', 'appointed_doctor_id', string="Appointment Count", readonly=True)
+    view_appointment_ids = fields.One2many('kmhospital.appointment', 'appointed_doctor_id', string="Appointment Count",
+                                           readonly=True)
     age = fields.Integer(string='Age', required=True)
     status = fields.Selection([
-        ('fulltime','Full time'),
+        ('fulltime', 'Full time'),
         ('parttime', 'Part time')
     ], required=True, default='fulltime')
     description = fields.Text()
@@ -27,19 +30,20 @@ class HospitalDoctor(models.Model):
     image = fields.Binary(string='Image', attachment=True)
 
     def action_status_halftime(self):
-        self.status= 'parttime'
+        self.status = 'parttime'
 
     def action_status_fulltime(self):
-        self.status= 'fulltime'
-    
+        self.status = 'fulltime'
+
     @api.constrains('email')
     def _check_email(self):
         for record in self:
-            valid_email = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', record.email)
-            
-            if valid_email == None:
+            valid_email = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
+                                   record.email)
+
+            if valid_email is None:
                 raise ValidationError('Please provide a valid E-mail')
-    
+
     @api.constrains('age')
     def _check_doctor_age(self):
         for record in self:

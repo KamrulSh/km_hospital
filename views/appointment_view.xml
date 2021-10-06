@@ -5,8 +5,8 @@
         <field name="name">kmhospital.appointment.tree</field>
         <field name="model">kmhospital.appointment</field>
         <field name="arch" type="xml">
-            <tree decoration-warning="status=='draft'" decoration-danger="status=='done'" 
-                    decoration-success="status=='confirmed'">
+            <tree decoration-warning="status=='draft'" decoration-danger="status=='done'"
+                  decoration-success="status=='confirmed'">
                 <field name="name"/>
                 <field name="gender"/>
                 <field name="phone" groups="km_hospital.group_hospital_admin"/>
@@ -36,7 +36,7 @@
                         <group>
                             <field name="status"/>
                             <field name="appointment_date"/>
-                            <field name="checkup_date"/>                           
+                            <field name="checkup_date"/>
                             <field name="appointed_doctor_id"/>
                         </group>
                     </group>
@@ -65,9 +65,13 @@
                         <page string="Medical Test" name="medicaltest">
                             <field name="prescription_medical_test_ids"/>
                         </page>
-                     </notebook>
-                          
+                    </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -77,22 +81,21 @@
         <field name="model">kmhospital.appointment</field>
         <field name="arch" type="xml">
             <search string="Appointment">
-                <field name="name"/>    
+                <field name="name"/>
                 <field name="gender"/>
                 <field name="phone" groups="km_hospital.group_hospital_admin"/>
                 <field name="age"/>
-                <field name="status"/>         
+                <field name="status"/>
                 <field name="appointed_doctor_id"/>
             </search>
-            </field>
+        </field>
     </record>
-
 
     <record id="appointment_kanban" model="ir.ui.view">
         <field name="name">kmhospital.appointment.kanban</field>
         <field name="model">kmhospital.appointment</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="status" decoration-warning="status=='draft'" decoration-danger="status=='done'" 
+            <kanban default_group_by="status" decoration-warning="status=='draft'" decoration-danger="status=='done'"
                     decoration-success="status=='confirmed'">
                 <field name="name"/>
                 <field name="gender"/>
@@ -103,13 +106,25 @@
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
-                                <h1 class="o_kanban_record_title"><field name="name"/></h1>
+                                <h1 class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </h1>
                                 <ul>
-                                    <li>Name : <field name="name"/></li>
-                                    <li>Phone : <field name="phone"/></li>
-                                    <li>Checkup date : <field name="checkup_date"/></li>
-                                    <li>Status : <field name="status"/></li>
-                                    <li>Appointed doctor: <field name="appointed_doctor_id"/></li>
+                                    <li>Name :
+                                        <field name="name"/>
+                                    </li>
+                                    <li>Phone :
+                                        <field name="phone"/>
+                                    </li>
+                                    <li>Checkup date :
+                                        <field name="checkup_date"/>
+                                    </li>
+                                    <li>Status :
+                                        <field name="status"/>
+                                    </li>
+                                    <li>Appointed doctor:
+                                        <field name="appointed_doctor_id"/>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -120,24 +135,25 @@
     </record>
 
     <!-- calender view -->
-    <record id="appointment_view_calendar" model="ir.ui.view">   
-        <field name="name">kmhospital.appointment.calendar</field>   
-        <field name="model">kmhospital.appointment</field>   
-        <field name="arch" type="xml">      
-            <calendar string="Appointments" date_start="appointment_date" date_stop="checkup_date" event_open_popup="true" mode="month" color="name" quick_add="False">          
-                <field name="name"/>         
+    <record id="appointment_view_calendar" model="ir.ui.view">
+        <field name="name">kmhospital.appointment.calendar</field>
+        <field name="model">kmhospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointments" date_start="appointment_date" date_stop="checkup_date"
+                      event_open_popup="true" mode="month" color="name" quick_add="False">
+                <field name="name"/>
             </calendar>
-        </field>   
-     </record>
+        </field>
+    </record>
 
     <!-- pivot view -->
-    <record id="appointment_pivot" model="ir.ui.view">  
-        <field name="name">kmhospital.appointment.pivot</field>  
-        <field name="model">kmhospital.appointment</field>  
-        <field name="arch" type="xml">      
-            <pivot string="Appointments Pivot View">           
-                <field name="name" type="row"/>      
-            </pivot>   
+    <record id="appointment_pivot" model="ir.ui.view">
+        <field name="name">kmhospital.appointment.pivot</field>
+        <field name="model">kmhospital.appointment</field>
+        <field name="arch" type="xml">
+            <pivot string="Appointments Pivot View">
+                <field name="name" type="row"/>
+            </pivot>
         </field>
     </record>
 
@@ -176,17 +192,17 @@
     </record>
 
     <menuitem id="hospital_appointment"
-        name="Appointments"
-        parent="hospital_root" />
+              name="Appointments"
+              parent="hospital_root"/>
 
     <menuitem id="all_appointment"
-        name="All Appointments"
-        parent="hospital_appointment"
-        action="appointment_action" />
+              name="All Appointments"
+              parent="hospital_appointment"
+              action="appointment_action"/>
 
     <menuitem id="print_patient_appointment"
-        name="Print Appointment"
-        parent="hospital_appointment"
-        action="action_report_appointment" />
+              name="Print Appointment"
+              parent="hospital_appointment"
+              action="action_report_appointment"/>
 
 </odoo>

@@ -16,12 +16,12 @@
     'version': '0.1',
     'license': 'LGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base','hr','website', 'website_sale'],
+    'depends': ['base', 'hr', 'website', 'website_sale', 'mail'],
 
     # always loaded
     'data': [
         'security/security.xml',
-        'security/ir.model.access.csv',    
+        'security/ir.model.access.csv',
         'wizard/appointment_report_view.xml',
         'views/patient_view.xml',
         'views/doctor_view.xml',
@@ -37,7 +37,7 @@
         'reports/sale_report_inherit.xml',
         'reports/appointment_report.xml',
     ],
-    'installable' : True,
-    'application' : True,
-    'auto_install' : False,
+    'installable': True,
+    'application': True,
+    'auto_install': False,
 }
