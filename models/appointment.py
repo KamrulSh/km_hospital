@@ -20,7 +20,8 @@ class HospitalAppointment(models.Model):
     status = fields.Selection([
         ('draft', 'Draft'),
         ('confirmed', 'Confirmed'),
-        ('done', 'Done')
+        ('done', 'Done'),
+        ('cancel', 'Canceled')
     ], default='draft', required=True)
     appointment_date = fields.Datetime(string='Appointment Date', default=fields.datetime.now())
     checkup_date = fields.Datetime(string='Checkup Date', required=True)
@@ -37,6 +38,9 @@ class HospitalAppointment(models.Model):
                 raise ValidationError('Checkup date should not be previous date.')
 
     # changing the status
+    def action_status_draft(self):
+        self.status = 'draft'
+
     def action_status_confirm(self):
         self.status = 'confirmed'
 

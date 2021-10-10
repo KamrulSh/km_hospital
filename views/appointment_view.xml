@@ -24,6 +24,10 @@
         <field name="model">kmhospital.appointment</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,confirm,done"
+                           options="{'clickable':'1'}"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -34,7 +38,6 @@
                             <field name="email"/>
                         </group>
                         <group>
-                            <field name="status"/>
                             <field name="appointment_date"/>
                             <field name="checkup_date"/>
                             <field name="appointed_doctor_id"/>
