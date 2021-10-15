@@ -19,7 +19,7 @@ class HospitalAppointment(models.Model):
     description = fields.Text()
     status = fields.Selection([
         ('draft', 'Draft'),
-        ('confirmed', 'Confirmed'),
+        ('confirm', 'Confirmed'),
         ('done', 'Done'),
         ('cancel', 'Canceled')
     ], default='draft', required=True)
@@ -42,10 +42,13 @@ class HospitalAppointment(models.Model):
         self.status = 'draft'
 
     def action_status_confirm(self):
-        self.status = 'confirmed'
+        self.status = 'confirm'
 
     def action_status_done(self):
         self.status = 'done'
+
+    def action_status_cancel(self):
+        self.status = 'cancel'
 
 
 # for medicine record in patient appointment

@@ -5,8 +5,8 @@
         <field name="name">kmhospital.appointment.tree</field>
         <field name="model">kmhospital.appointment</field>
         <field name="arch" type="xml">
-            <tree decoration-warning="status=='draft'" decoration-danger="status=='done'"
-                  decoration-success="status=='confirmed'">
+            <tree decoration-primary="status=='draft'" decoration-warning="status=='confirm'"
+                  decoration-success="status=='done'" decoration-danger="status=='cancel'">
                 <field name="name"/>
                 <field name="gender"/>
                 <field name="phone" groups="km_hospital.group_hospital_admin"/>
@@ -25,7 +25,12 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="status" widget="statusbar" statusbar_visible="draft,confirm,done"
+                    <button id="button_confirm" name="action_status_confirm" string="Confirm" class="btn-warning"
+                            type="object"/>
+                    <button id="button_done" name="action_status_done" string="Done" class="btn-success" type="object"/>
+                    <button id="button_cancel" name="action_status_cancel" string="Cancel" class="btn-danger"
+                            type="object"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,confirm,done,cancel"
                            options="{'clickable':'1'}"/>
                 </header>
                 <sheet>
