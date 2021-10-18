@@ -22,9 +22,9 @@ class HospitalAppointment(models.Model):
         ('confirm', 'Confirmed'),
         ('done', 'Done'),
         ('cancel', 'Canceled')
-    ], default='draft', required=True)
-    appointment_date = fields.Datetime(string='Appointment Date', default=fields.datetime.now())
-    checkup_date = fields.Datetime(string='Checkup Date', required=True)
+    ], default='draft', required=True, tracking=True)
+    appointment_date = fields.Datetime(string='Appointment Date', default=fields.datetime.now(), tracking=True)
+    checkup_date = fields.Datetime(string='Checkup Date', required=True, tracking=True)
     prescription_medicine_ids = fields.One2many("kmhospital.appointment.prescription.medicine",
                                                 "appointment_medicine_id", string="Prescription Medicine")
     appointed_doctor_id = fields.Many2one("kmhospital.doctor", string="Doctor name", required=True)

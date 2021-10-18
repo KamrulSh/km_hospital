@@ -8,25 +8,25 @@ class HospitalDoctor(models.Model):
     _description = 'Hospital Doctor'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string='Doctor Name', required=True)
-    college = fields.Char(string='College')
-    address = fields.Char(string='Address')
+    name = fields.Char(string='Doctor Name', required=True, tracking=True)
+    college = fields.Char(string='College', tracking=True)
+    address = fields.Char(string='Address', tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
     ], default='male')
-    phone = fields.Char(string='Phone', required=True)
-    email = fields.Char(string='Email', required=True)
-    department_id = fields.Many2one("hr.department", string='Department', required=True)
+    phone = fields.Char(string='Phone', required=True, tracking=True)
+    email = fields.Char(string='Email', required=True, tracking=True)
+    department_id = fields.Many2one("hr.department", string='Department', required=True, tracking=True)
     view_appointment_ids = fields.One2many('kmhospital.appointment', 'appointed_doctor_id', string="Appointment Count",
                                            readonly=True)
-    age = fields.Integer(string='Age', required=True)
+    age = fields.Integer(string='Age', required=True, tracking=True)
     status = fields.Selection([
         ('fulltime', 'Full time'),
         ('parttime', 'Part time')
-    ], required=True, default='fulltime')
+    ], required=True, default='fulltime', tracking=True)
     description = fields.Text()
-    joined_from = fields.Date(string='Joined Date')
+    joined_from = fields.Date(string='Joined Date', tracking=True)
     image = fields.Binary(string='Image', attachment=True)
 
     def action_status_halftime(self):

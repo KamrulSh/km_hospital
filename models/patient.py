@@ -9,15 +9,15 @@ class HospitalPatient(models.Model):
     _order = 'id desc'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string='Patient Name', required=True)
-    address = fields.Char(string='Address')
+    name = fields.Char(string='Patient Name', required=True, tracking=True)
+    address = fields.Char(string='Address', tracking=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
-    ], default="male")
-    phone = fields.Char(string='Phone', required=True)
-    age = fields.Integer(string='Age', required=True)
-    email = fields.Char(string='Email')
+    ], default="male", tracking=True)
+    phone = fields.Char(string='Phone', required=True, tracking=True)
+    age = fields.Integer(string='Age', required=True, tracking=True)
+    email = fields.Char(string='Email', tracking=True)
     patient_appointment_ids = fields.One2many('kmhospital.appointment', 'name', string="Appointment Count",
                                               readonly=True)
 
