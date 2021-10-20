@@ -52,6 +52,13 @@ class HospitalAppointment(models.Model):
     def action_status_cancel(self):
         self.status = 'cancel'
 
+    @api.model
+    def create(self, vals):
+        if not vals['description']:
+            vals['description'] = "Enter the description here"
+        res = super(HospitalAppointment, self).create(vals)
+        return res
+
 
 # for medicine record in patient appointment
 class AppointmentPrescriptionMedicine(models.Model):
