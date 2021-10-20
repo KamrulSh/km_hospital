@@ -22,7 +22,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
-        'wizard/appointment_report_view.xml',
+        'data/appointment_seq.xml',
         'views/patient_view.xml',
         'views/doctor_view.xml',
         'views/department_view.xml',
@@ -33,6 +33,7 @@
         'views/website_apntment_form.xml',
         'views/equipment_sale.xml',
         'views/sales_order.xml',
+        'wizard/appointment_report_view.xml',
         'reports/report.xml',
         'reports/sale_report_inherit.xml',
         'reports/appointment_report.xml',

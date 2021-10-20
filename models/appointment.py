@@ -8,7 +8,7 @@ class HospitalAppointment(models.Model):
     _order = "id desc"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string='Order Reference', required=True, copy=False,
+    name = fields.Char(string='Appointment Reference', required=True, copy=False, readonly=True,
                        default=lambda self: _('New'))
     patient_id = fields.Many2one("kmhospital.patient", string='Patient Name', required=True)
     gender = fields.Selection([
@@ -56,6 +56,9 @@ class HospitalAppointment(models.Model):
     def create(self, vals):
         if not vals['description']:
             vals['description'] = "Enter the description here"
+        if vals.get('name', _('New')) == _('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('kmhospital.appointment') or _('New')
+
         res = super(HospitalAppointment, self).create(vals)
         return res
 
