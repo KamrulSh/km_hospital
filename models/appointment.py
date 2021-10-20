@@ -1,5 +1,5 @@
 from odoo.exceptions import ValidationError
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class HospitalAppointment(models.Model):
@@ -8,14 +8,16 @@ class HospitalAppointment(models.Model):
     _order = "id desc"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Many2one("kmhospital.patient", string='Patient Name', required=True)
+    name = fields.Char(string='Order Reference', required=True, copy=False,
+                       default=lambda self: _('New'))
+    patient_id = fields.Many2one("kmhospital.patient", string='Patient Name', required=True)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female')
-    ], related='name.gender')
-    phone = fields.Char(string='Phone', related='name.phone')
-    email = fields.Char(string='Email', related='name.email')
-    age = fields.Integer(string='Age', related='name.age')
+    ], related='patient_id.gender')
+    phone = fields.Char(string='Phone', related='patient_id.phone')
+    email = fields.Char(string='Email', related='patient_id.email')
+    age = fields.Integer(string='Age', related='patient_id.age')
     description = fields.Text()
     status = fields.Selection([
         ('draft', 'Draft'),
