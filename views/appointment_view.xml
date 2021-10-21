@@ -192,6 +192,19 @@
         </field>
     </record>
 
+    <record id="appointment_action_kids" model="ir.actions.act_window">
+        <field name="name">Kids Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kmhospital.appointment</field>
+        <field name="view_mode">tree,form,search,kanban,calendar,pivot</field>
+        <field name="domain">[('age', '&lt;=', 10)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create New Appointment
+            </p>
+        </field>
+    </record>
+
     <!-- action server for changing the status to confirmed -->
     <record id="action_appointment_confirm" model="ir.actions.server">
         <field name="name">Confirm appointment</field>
@@ -222,6 +235,11 @@
               name="All Appointments"
               parent="hospital_appointment"
               action="appointment_action"/>
+
+    <menuitem id="kids_appointment"
+              name="Kids Appointments"
+              parent="hospital_appointment"
+              action="appointment_action_kids"/>
 
     <menuitem id="print_patient_appointment"
               name="Print Appointment"
