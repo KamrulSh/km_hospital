@@ -102,6 +102,12 @@
                 <field name="age"/>
                 <field name="status"/>
                 <field name="appointed_doctor_id"/>
+                <separator/>
+                <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
+                <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Status" name="state" context="{'group_by':'status'}"/>
+                </group>
             </search>
         </field>
     </record>
@@ -177,6 +183,8 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.appointment</field>
         <field name="view_mode">tree,form,search,kanban,calendar,pivot</field>
+        <field name="context">{}</field>
+        <!--for default group & filter => {'search_default_state': 1, 'search_default_male': 1}-->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create New Appointment
