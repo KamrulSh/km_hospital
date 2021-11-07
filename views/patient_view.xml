@@ -104,11 +104,25 @@
         </field>
     </record>
 
+    <record id="all_patient_action" model="ir.actions.act_window">
+        <field name="name">All Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kmhospital.patient</field>
+        <field name="view_mode">tree,form,search,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Patients List
+            </p>
+        </field>
+    </record>
+
     <record id="male_patient_action" model="ir.actions.act_window">
         <field name="name">Male Patients</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.patient</field>
         <field name="view_mode">tree,form,search,kanban</field>
+        <field name="context">{'default_gender' : 'male'}</field>
+        <field name="domain">[('gender','=', 'male')]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create Patients List
@@ -121,6 +135,8 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.patient</field>
         <field name="view_mode">tree,form,search,kanban</field>
+        <field name="context">{'default_gender' : 'female'}</field>
+        <field name="domain">[('gender','=', 'female')]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create Patients List
@@ -168,15 +184,23 @@
               groups="km_hospital.group_hospital_admin"
               sequence='5'/>
 
+    <menuitem id="hospital_patient_all"
+              name="All Patients"
+              parent="hospital_patient"
+              action="all_patient_action"
+              sequence='6'/>
+
     <menuitem id="hospital_patient_male"
               name="Male Patients"
               parent="hospital_patient"
-              action="male_patient_action"/>
+              action="male_patient_action"
+              sequence='7'/>
 
     <menuitem id="hospital_patient_female"
               name="Female Patients"
               parent="hospital_patient"
-              action="female_patient_action"/>
+              action="female_patient_action"
+              sequence='8'/>
 
     <menuitem
             id='menu_product'
