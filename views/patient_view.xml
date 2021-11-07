@@ -104,8 +104,20 @@
         </field>
     </record>
 
-    <record id="patient_action" model="ir.actions.act_window">
-        <field name="name">Patients</field>
+    <record id="male_patient_action" model="ir.actions.act_window">
+        <field name="name">Male Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kmhospital.patient</field>
+        <field name="view_mode">tree,form,search,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Patients List
+            </p>
+        </field>
+    </record>
+
+    <record id="female_patient_action" model="ir.actions.act_window">
+        <field name="name">Female Patients</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.patient</field>
         <field name="view_mode">tree,form,search,kanban</field>
@@ -154,7 +166,17 @@
               name="Patients"
               parent="hospital_root"
               groups="km_hospital.group_hospital_admin"
-              action="patient_action"/>
+              sequence='5'/>
+
+    <menuitem id="hospital_patient_male"
+              name="Male Patients"
+              parent="hospital_patient"
+              action="male_patient_action"/>
+
+    <menuitem id="hospital_patient_female"
+              name="Female Patients"
+              parent="hospital_patient"
+              action="female_patient_action"/>
 
     <menuitem
             id='menu_product'
