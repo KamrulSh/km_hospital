@@ -33,7 +33,7 @@
                             <field name="phone"/>
                         </group>
                         <group>
-                            <field name="gender"/>
+                            <field name="gender" invisible="context.get('hide_gender')"/>
                             <field name="email"/>
                             <field name="age"/>
                         </group>
@@ -121,7 +121,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.patient</field>
         <field name="view_mode">tree,form,search,kanban</field>
-        <field name="context">{'default_gender' : 'male'}</field>
+        <field name="context">{'default_gender' : 'male', 'hide_gender' : 1}</field>
         <field name="domain">[('gender','=', 'male')]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -135,7 +135,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">kmhospital.patient</field>
         <field name="view_mode">tree,form,search,kanban</field>
-        <field name="context">{'default_gender' : 'female'}</field>
+        <field name="context">{'default_gender' : 'female', 'hide_gender' : 1}</field>
         <field name="domain">[('gender','=', 'female')]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
