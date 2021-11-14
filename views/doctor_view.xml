@@ -47,7 +47,12 @@
                         <page string="About">
                             <field name='description'/>
                         </page>
-                        <page string="Patient List">
+                        <page string="Patient List" autofocus="autofocus">
+                            <group string="Total Appointments:">
+                                <h2>
+                                    <field name="total_appointments"/>
+                                </h2>
+                            </group>
                             <field name='view_appointment_ids'/>
                         </page>
                     </notebook>

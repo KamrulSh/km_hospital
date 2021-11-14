@@ -28,6 +28,7 @@ class HospitalDoctor(models.Model):
     description = fields.Text()
     joined_from = fields.Date(string='Joined Date', tracking=True)
     image = fields.Binary(string='Image', attachment=True)
+    total_appointments = fields.Integer(string='Total appointments', compute='_compute_appointments')
 
     def action_status_halftime(self):
         self.status = 'parttime'
@@ -50,8 +51,9 @@ class HospitalDoctor(models.Model):
             if record.age <= 0:
                 raise ValidationError('Age must be greater than 0')
 
-    # same as view_appointment_ids but implemented using computed fields     
-    # total_appointments = fields.Integer(string='Total appointments', compute='_compute_appointments')
-    # def _compute_appointments(self):
-    #     for record in self:
-    #         record.total_appointments = self.env['kmhospital.appointment'].search_count([('appointed_doctor_id', '=', record.id)])
+    # same as view_appointment_ids but implemented using computed fields
+    # compute appointments of individual doctor
+    def _compute_appointments(self):
+        for record in self:
+            record.total_appointments = self.env['kmhospital.appointment'].search_count(
+                [('appointed_doctor_id', '=', record.id)])
