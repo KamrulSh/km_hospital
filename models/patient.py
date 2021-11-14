@@ -18,8 +18,9 @@ class HospitalPatient(models.Model):
     phone = fields.Char(string='Phone', required=True, tracking=True)
     age = fields.Integer(string='Age', required=True, tracking=True)
     email = fields.Char(string='Email', tracking=True)
-    patient_appointment_ids = fields.One2many('kmhospital.appointment', 'name', string="Appointment Count",
+    patient_appointment_ids = fields.One2many('kmhospital.appointment', 'patient_id', string="Appointment Count",
                                               readonly=True)
+    total_appointments = fields.Integer(string='No. of appointments', compute='_compute_appointments')
 
     # check if the patient is already exists based on the patient name and phone number
     @api.constrains('name', 'phone')
@@ -43,6 +44,12 @@ class HospitalPatient(models.Model):
         for record in self:
             if record.age <= 0:
                 raise ValidationError('Age must be greater than 0')
+
+    # compute appointments of individual patient
+    def _compute_appointments(self):
+        for record in self:
+            record.total_appointments = self.env['kmhospital.appointment'].search_count(
+                [('patient_id', '=', record.id)])
 
     def action_url(self):
         return {

@@ -40,6 +40,11 @@
                     </group>
                     <notebook>
                         <page string="Appointments">
+                            <group string="No. of Appointments:">
+                                <h2>
+                                    <field name="total_appointments"/>
+                                </h2>
+                            </group>
                             <field name="patient_appointment_ids"/>
                         </page>
                     </notebook>
