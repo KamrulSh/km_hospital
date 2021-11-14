@@ -19,6 +19,7 @@ class HospitalAppointment(models.Model):
     email = fields.Char(string='Email', related='patient_id.email')
     age = fields.Integer(string='Age', related='patient_id.age')
     description = fields.Text()
+    note = fields.Text()
     status = fields.Selection([
         ('draft', 'Draft'),
         ('confirm', 'Confirmed'),
@@ -61,6 +62,14 @@ class HospitalAppointment(models.Model):
 
         res = super(HospitalAppointment, self).create(vals)
         return res
+
+    @api.onchange('patient_id')
+    def _change_appointment_note(self):
+        if self.patient_id:
+            if not self.note:
+                self.note = "New appointment"
+        else:
+            self.note = ""
 
 
 # for medicine record in patient appointment
