@@ -54,7 +54,7 @@
                             <field name="appointment_date"/>
                             <field name="checkup_date"/>
                             <field name="appointed_doctor_id"/>
-                            <field name="note"/>
+                            <field name="note" readonly="1" force_save="1"/>
                         </group>
                     </group>
                     <notebook>
