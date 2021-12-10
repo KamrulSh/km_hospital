@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="create_appointment_form" model="ir.ui.view">
+        <field name="name">kmhospital.appointment.wizard.form</field>
+        <field name="model">kmhospital.appointment.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="age"/>
+                        <field name="gender"/>
+                        <field name="phone" groups="km_hospital.group_hospital_admin"/>
+                        <field name="email"/>
+                    </group>
+                    <group>
+                        <field name="appointment_date"/>
+                        <field name="checkup_date"/>
+                        <field name="appointed_doctor_id"/>
+                    </group>
+                </group>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_create_patient_appointment" model="ir.actions.act_window">
+        <field name="name">Create Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">kmhospital.appointment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_appointment_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

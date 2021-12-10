@@ -249,4 +249,9 @@
               parent="hospital_appointment"
               action="action_report_appointment"/>
 
+    <menuitem id="create_patient_appointment"
+              name="Create Appointment"
+              parent="hospital_appointment"
+              action="action_create_patient_appointment"/>
+
 </odoo>
