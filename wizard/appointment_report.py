@@ -16,7 +16,7 @@ class AppointmentReportWizard(models.TransientModel):
         patient_id = self.patient_id
         domain = []
         if patient_id:
-            domain += [('name', '=', patient_id.id)]
+            domain += [('patient_id', '=', patient_id.id)]
         date_from = self.date_from
         if date_from:
             domain += [('checkup_date', '>=', date_from)]
